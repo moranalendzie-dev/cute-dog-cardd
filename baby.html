@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For my Baby 🤍</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(#fff1f5, #fde2e4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Comic Sans MS', cursive;
+  overflow: hidden;
+}
+
+.card {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 30px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  text-align: center;
+  max-width: 400px;
+}
+
+
+.dog {
+  position: relative;
+  width: 180px;
+  height: 200px;
+  margin: 0 auto 10px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+
+.head {
+  width: 150px;
+  height: 140px;
+  background: #fff0d8;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  z-index: 2;
+}
+
+
+.ear {
+  width: 45px;
+  height: 70px;
+  background: #ffe6c3; 
+  border-radius: 50%;
+  position: absolute;
+  top: 15px;
+}
+.ear.left { left: -15px; }
+.ear.right { right: -15px; }
+
+
+.eye {
+  width: 8px;
+  height: 8px;
+  background: #000;
+  border-radius: 50%;
+  position: absolute;
+  top: 55px;
+}
+.eye.left { left: 50px; }
+.eye.right { right: 50px; }
+
+
+.blush {
+  width: 14px;
+  height: 8px;
+  background: #ff9db2;
+  border-radius: 50%;
+  position: absolute;
+  top: 75px;
+  opacity: 0.5;
+  transition: all 0.4s ease;
+}
+.blush.left { left: 30px; }
+.blush.right { right: 30px; }
+
+
+.nose {
+  width: 14px;
+  height: 10px;
+  background: #000;
+  border-radius: 50%;
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+.body {
+  width: 100px;
+  height: 70px;
+  background: #fff0d8; 
+  border-radius: 45px;
+  position: absolute;
+  bottom: 35px;
+  left: 40px;
+  z-index: 1;
+}
+
+
+.paw {
+  width: 16px;
+  height: 12px;
+  background: #fff7e6;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -6px;
+}
+.paw.left { left: 18px; }
+.paw.right { right: 18px; }
+
+/* tail */
+.tail {
+  width: 30px;
+  height: 10px;
+  background: #ffe6c3;
+  border-radius: 20px;
+  position: absolute;
+  right: -20px;
+  top: 20px;
+  animation: wag 0.4s infinite alternate;
+}
+
+@keyframes wag {
+  from { transform: rotate(20deg); }
+  to { transform: rotate(-20deg); }
+}
+
+
+.happy {
+  animation: happyJump 0.6s ease;
+}
+
+@keyframes happyJump {
+  0% { transform: scale(1) translateY(0); }
+  50% { transform: scale(1.05) translateY(-10px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+
+.question {
+  font-size: 18px;
+  margin-top: 12px;
+  color: #444;
+}
+
+.buttons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+button {
+  border: none;
+  padding: 10px 22px;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#yes {
+  background: #ff7aa2;
+  color: white;
+}
+
+#no {
+  background: #eee;
+  color: #555;
+}
+
+
+.love {
+  display: none;
+}
+
+.love h2 {
+  color: #ff7aa2;
+}
+
+.heart {
+  position: absolute;
+  bottom: -20px;
+  font-size: 18px;
+  opacity: 0.6;
+  animation: floatUp 6s infinite ease-in;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <div class="dog" id="dog">
+    <div class="head">
+      <div class="ear left"></div>
+      <div class="ear right"></div>
+      <div class="eye left"></div>
+      <div class="eye right"></div>
+      <div class="blush left"></div>
+      <div class="blush right"></div>
+      <div class="nose"></div>
+    </div>
+
+    <div class="body">
+      <div class="paw left"></div>
+      <div class="paw right"></div>
+      <div class="tail"></div>
+    </div>
+  </div>
+
+  <div class="question" id="question">
+    miss mo ba ako? :((( 🤍
+  </div>
+
+  <div class="buttons" id="buttons">
+    <button id="yes">Yes</button>
+    <button id="no">No</button>
+  </div>
+
+  <div class="love" id="love">
+    <h2>Yay!! 🥹🤍</h2>
+    <p>Miss na kita, lovey :((</p>
+    <p>
+      I hope you know that I love you so much.  
+      Thank you for choosing me,  
+      today and always.
+    </p>
+  </div>
+</div>
+
+<script>
+let yes = document.getElementById("yes");
+let no = document.getElementById("no");
+let dog = document.getElementById("dog");
+let blush = document.querySelectorAll(".blush");
+let scale = 1;
+
+no.onclick = () => {
+  scale += 0.3;
+  yes.style.transform = `scale(${scale})`;
+  if (scale > 3) no.style.display = "none";
+};
+
+yes.onclick = () => {
+  document.getElementById("question").style.display = "none";
+  document.getElementById("buttons").style.display = "none";
+  document.getElementById("love").style.display = "block";
+
+  // dog happy jump
+  dog.classList.add("happy");
+
+  // blush stronger
+  blush.forEach(b => {
+    b.style.opacity = "1";
+    b.style.transform = "scale(1.3)";
+  });
+
+  // hearts
+  for (let i = 0; i < 25; i++) {
+    let h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "🤍";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.animationDuration = 4 + Math.random() * 4 + "s";
+    document.body.appendChild(h);
+  }
+};
+</script>
+
+</body>
+</html>
